@@ -5,6 +5,8 @@ public abstract class Work {
 
 	public abstract void fight();
 
+	public abstract void recovery();
+
 	public String getName() {
 		return name;
 	}

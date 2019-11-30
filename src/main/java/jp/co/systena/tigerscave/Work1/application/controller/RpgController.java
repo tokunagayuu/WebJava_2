@@ -52,13 +52,25 @@ public class RpgController {
 
 		return mav;
 	}
-	@RequestMapping(value = "/Result", method = RequestMethod.GET) // URLとのマッピング
-	public ModelAndView res(ModelAndView mav) {
+	@RequestMapping(value = "/Result", params = "fight",method = RequestMethod.POST) // URLとのマッピング
+	public ModelAndView resfight(ModelAndView mav) {
 
 		Work work = (Work) session.getAttribute("okabe");
 		work.fight();
 		mav.addObject("okabe",work);
 		mav.setViewName("Result");
+		mav.addObject("flg","fight");
+
+		return mav;
+	}
+	@RequestMapping(value = "/Result", params = "recovery",method = RequestMethod.POST) // URLとのマッピング
+	public ModelAndView resrecovery(ModelAndView mav) {
+
+		Work work = (Work) session.getAttribute("okabe");
+		work.recovery();
+		mav.addObject("okabe",work);
+		mav.setViewName("Result");
+		mav.addObject("flg","recovery");
 
 		return mav;
 	}
