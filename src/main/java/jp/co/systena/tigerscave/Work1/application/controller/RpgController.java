@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.systena.tigerscave.Work1.application.model.Brave;
 import jp.co.systena.tigerscave.Work1.application.model.Charaform;
+import jp.co.systena.tigerscave.Work1.application.model.Warrior;
 import jp.co.systena.tigerscave.Work1.application.model.Wizard;
 import jp.co.systena.tigerscave.Work1.application.model.Work;
 
@@ -40,6 +41,8 @@ public class RpgController {
 
 		}else if(form.getWork().equals("魔法使い")){
 			work = new Wizard();
+		}else if(form.getWork().equals("武闘家")){
+			work = new Warrior();
 		}
 		work.setName(form.getName());
 		session.setAttribute("okabe", work);
@@ -55,9 +58,9 @@ public class RpgController {
 		Work work = (Work) session.getAttribute("okabe");
 		work.fight();
 		mav.addObject("okabe",work);
-		mav.setViewName("result");
+		mav.setViewName("Result");
 
 		return mav;
 	}
-	  }
+}
 
